@@ -1,0 +1,29 @@
+sources:
+  - name: jaffle_shop
+    description: "This is the source data for the jaffle shop."
+    database: raw
+    schema: jaffle_shop
+    tables:
+      - name: customers
+        description: "This table contains customer data."
+        columns:
+          - name: id
+            description: "The unique identifier for each customer."
+            tests:
+              - unique
+              - not_null
+      - name: orders
+        # config:
+        #   freshness:
+        #     warn_after:
+        #       count: 24
+        #       period: hour
+        #     error_after:
+        #       count: 48
+        #       period: hour
+        #   loaded_at_field: _etl_loaded_at
+  - name: stripe
+    database: raw
+    schema: stripe
+    tables:
+      - name: payment
